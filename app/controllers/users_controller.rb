@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-  skip_before_filter :verify_authenticity_token, :only => [:track]
+  skip_before_filter :verify_authenticity_token, :only => [:track, :register]
 
   # GET /users
   # GET /users.json
@@ -69,6 +69,14 @@ class UsersController < ApplicationController
       user.source = params[:source]
       user.save
     end
+    
+    render nothing: true
+  end
+
+  # POST /users/register
+  def register
+    user = User.new(user_params)
+    user.save
     
     render nothing: true
   end

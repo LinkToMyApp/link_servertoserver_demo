@@ -2,6 +2,7 @@ Demoapp::Application.routes.draw do
   resources :users do
     collection do
       post :track
+      post :register
     end
   end
 
